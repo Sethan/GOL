@@ -10,5 +10,16 @@ package model;
  * @author lars
  */
 public class CellGraph {
+    private Cell[][] table;
+    private int cellRow;
+    private int cellCol;
+    private int simulations;
     
+    
+    public CellGraph(int dX, int dY)
+    {
+        this.cellRow=dX;
+        this.cellCol=dY;
+        this.table = new Cell[dX][dY];
+    }
 }
