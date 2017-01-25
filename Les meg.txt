@@ -1,0 +1,8 @@
+Hvordan bruke git 
+1. Lag en mappe i Dokumenter/NetBeansProcjects/ 
+2. bruk cd Documents
+3. bruk cd NetBeansProjects
+4. bruk cd "navn på ny mappe"
+5. bruk git init
+6. bruk git clone https://github.com/Sethan/GOL
+7. for å legge til ting må du bruke git add . , git commit -m ""Beskrivelse"", git fetch origin, git push --set-upstream origin master
