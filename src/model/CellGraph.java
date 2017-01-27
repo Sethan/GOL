@@ -10,10 +10,11 @@ package model;
  * @author lars
  */
 public class CellGraph {
-    private Cell[][] table;
-    private int cellRow;
-    private int cellCol;
+    public Cell[][] table;
+    private final int cellRow;
+    private final int cellCol;
     private int simulations;
+    public Boolean[][] copy;
     
     
     public CellGraph(int dX, int dY)
@@ -32,21 +33,98 @@ public class CellGraph {
     }
     public void run()
     {
+        this.copy = null;
+        this.copy = new Boolean[this.cellRow][this.cellCol];
+        for(int i=0; i<this.cellRow;i++)
+        {
+            for(int n=0; n<this.cellCol; n++)
+            {
+                this.copy[i][n]=this.table[i][n].isAlive();
+            }
+        }
+       
+        for(int i=0; i < this.cellRow; i++)
+        {
+            for(int n=0; n < this.cellCol; n++)
+            {    
+               this.decide(i, n);
+            }
+        }
+        
+        for(int i=0; i<this.cellRow;i++)
+        {
+            for(int n=0; n<this.cellCol; n++)
+            {
+                if(this.copy[i][n]!=this.table[i][n].isAlive())
+                {
+                    this.table[i][n].changeState();
+                }
+            }
+        }
+        
+        this.simulations++;
+    }
+    public void findAlive()
+    {
+        String s = "";
         for(int i=0; i < this.cellRow; i++)
         {
             for(int n=0; n < this.cellCol; n++)
             {
-               if(!this.table[i][n].isAlive()&&this.table[i][n].scan(this.table))
-               {
-                   this.table[i][n].changeState();
-               }
-               else if(this.table[i][n].isAlive()&&!this.table[i][n].scan(this.table))
-               {
-                   this.table[i][n].changeState();
-               }
-               
+                if(this.table[i][n].isAlive())
+                {
+                    String t =i+","+n+"   ";
+                    s=s+t;
+                }
             }
         }
-        this.simulations++;
+        System.out.println(s);
+    }
+
+    public void decide(int x , int y)
+    {
+        int neighbours=this.scan(x, y);
+
+        if(this.table[x][y].isAlive())
+        {
+            if(neighbours>3||neighbours<2)
+            {
+                this.copy[x][y]=!this.copy[x][y];
+              
+            }
+        }
+        else
+        {
+            if(neighbours==3)
+            {
+                this.copy[x][y]=!this.copy[x][y];
+            }
+        }
+    }
+    
+    public int scan(int x, int y)
+    {
+        int neighbours=0;
+            
+        for(int i =-1; i<2; i++)
+        {
+            for(int n=-1; n<2; n++)
+            {
+                if(!(n==0&&i==0))
+                {
+                    if((x+i<0)||(y+n<0)||(y+n>this.cellCol-1)||(x+i>this.cellRow-1))
+                    {
+                        
+                    }
+                    else if(this.table[x+i][y+n].isAlive())
+                    {
+                        neighbours++;
+                        
+                    }
+                }
+            }
+        }
+        return neighbours;
+
     }
 }

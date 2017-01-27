@@ -25,37 +25,8 @@ public class Cell {
     {
         this.alive=!this.alive;
     }
-    
     public boolean isAlive()
     {
         return this.alive;
-    }
-    public boolean scan(Cell[][] table)
-    {
-        int t=0;
-        
-        for(int i =-1; i<2; i++)
-        {
-            for(int n=-1; n<2; n++)
-            {
-                if(!(n==0&&i==0))
-                {
-                    if(table[this.xLocation+i][this.yLocation+n].isAlive())
-                    {
-                        t=t+1;
-                    }
-                }
-            }
-        }
-        
-        
-        if(t==3)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 }
