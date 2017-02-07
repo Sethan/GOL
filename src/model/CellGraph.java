@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package model;
-
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  *
  * @author lars
@@ -15,7 +16,7 @@ public class CellGraph {
     private final int cellCol;
     private int simulations;
     public Boolean[][] copy;
-    
+          
     
     public CellGraph(int dX, int dY)
     {
@@ -137,5 +138,18 @@ public class CellGraph {
         }
         return neighbours;
 
+    }
+    public void resetGraph()
+    {
+        for(int i=0; i < this.cellRow; i++)
+        {
+            for(int n=0; n < this.cellCol; n++)
+            {
+                if(this.table[i][n].isAlive())
+                {
+                    this.table[i][n].changeState();
+                }
+            }
+        }
     }
 }

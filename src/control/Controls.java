@@ -5,8 +5,11 @@
  */
 package control;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javax.swing.*;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -33,6 +36,8 @@ public class Controls implements Initializable {
     {
        GraphicsContext gc = mainCanvas.getGraphicsContext2D();
        Paint.drawGrid(gc, mainCanvas, test);
+       timer.schedule(task, 500, 500);
+       
         
     }
     @FXML private Button startBtn;
@@ -40,12 +45,27 @@ public class Controls implements Initializable {
     @FXML private Button resetBtn;
     @FXML private Canvas mainCanvas;
     @FXML private Slider speedSlider;
+    private static boolean play=false;
     
     CellGraph test=new CellGraph(70,41);
     
     
     
-    
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask()
+    {
+        @Override
+        public void run()
+        {
+            if(play)
+            {
+                test.run();
+                GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+                Paint.drawSquares(gc, mainCanvas, test);
+                Paint.drawGrid(gc, mainCanvas, test);
+            }
+        }
+    }; 
     
     
     //user events
@@ -61,22 +81,26 @@ public class Controls implements Initializable {
 
     public void speedIncreased(MouseEvent event)
     {
-        System.out.println("Oesf");
+        System.out.println(speedSlider.getValue());       
+  
     }
 
     public void stopButton(ActionEvent event)
     {
-		
+	play=false;	
     }
     
     public void resetButton(ActionEvent event)
     {
-        
+        test.resetGraph();
+        GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+        Paint.drawSquares(gc, mainCanvas, test);
+        Paint.drawGrid(gc, mainCanvas, test);
     }
     
     public void startButton(ActionEvent event)
     {
-        
+        play=true;
     }
      
 }
