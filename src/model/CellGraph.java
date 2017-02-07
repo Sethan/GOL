@@ -31,6 +31,17 @@ public class CellGraph {
             }
         }
     }
+    
+    public int getW()
+    {
+        return this.cellRow;
+    }
+    
+    public int getH()
+    {
+        return this.cellCol;
+    }
+    
     public void run()
     {
         this.copy = null;
