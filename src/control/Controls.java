@@ -9,16 +9,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javax.swing.*;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 import javafx.scene.control.Button;
 import model.CellGraph;
 import model.Paint;
@@ -48,7 +44,7 @@ public class Controls implements Initializable {
     @FXML private Slider speedSlider;
     private static boolean play=false;
     
-    CellGraph test=new CellGraph(70,41);
+    CellGraph test=new CellGraph(70,40);
     
     
     
@@ -70,7 +66,7 @@ public class Controls implements Initializable {
 
     public void speedIncreased(MouseEvent event)
     {
-        int delay = 1950-19*(int)speedSlider.getValue();
+        int delay = 400-30*(int)Math.sqrt(speedSlider.getValue());
         task.cancel();
         task = new RunTimer();
         timer.scheduleAtFixedRate(task, 250, delay);

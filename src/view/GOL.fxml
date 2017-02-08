@@ -7,9 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1028.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1028.0" style="-fx-background-color: #DARKGREY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controls">
    <children>
-      <BorderPane layoutX="156.0" layoutY="14.0" prefHeight="627.0" prefWidth="1028.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="156.0" layoutY="14.0" prefHeight="627.0" prefWidth="1028.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
          <top>
             <MenuBar BorderPane.alignment="CENTER">
               <menus>
@@ -74,7 +74,7 @@
          <center>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: ;" BorderPane.alignment="CENTER">
                <children>
-                  <Canvas height="512.0" width="826.0"fx:id="mainCanvas" onMouseClicked="#canvasClick"/>
+                  <Canvas height="550.0" width="1028.0" fx:id="mainCanvas" onMouseClicked="#canvasClick" />
                </children>
             </HBox>
          </center>

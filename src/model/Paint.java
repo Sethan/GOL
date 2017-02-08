@@ -40,7 +40,7 @@ public class Paint {
     {
         gc = mC.getGraphicsContext2D();
         
-        gc.setFill(javafx.scene.paint.Color.LIGHTGREY);
+        gc.setFill(javafx.scene.paint.Color.WHITESMOKE);
         gc.fillRect(0, 0, mC.getWidth(), mC.getHeight());
         for(int i = 0; i<cellG.getH();i++)
         {
