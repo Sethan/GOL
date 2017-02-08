@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import model.CellGraph;
 import model.Paint;
 
+
 /**
  *
  * @author lars
@@ -36,7 +37,7 @@ public class Controls implements Initializable {
     {
        GraphicsContext gc = mainCanvas.getGraphicsContext2D();
        Paint.drawGrid(gc, mainCanvas, test);
-       timer.schedule(task, 500, 500);
+       timer.scheduleAtFixedRate(task, 500, 500);
        
         
     }
@@ -51,21 +52,9 @@ public class Controls implements Initializable {
     
     
     
-    Timer timer = new Timer();
-    TimerTask task = new TimerTask()
-    {
-        @Override
-        public void run()
-        {
-            if(play)
-            {
-                test.run();
-                GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-                Paint.drawSquares(gc, mainCanvas, test);
-                Paint.drawGrid(gc, mainCanvas, test);
-            }
-        }
-    }; 
+    Timer timer = new Timer(true);
+    RunTimer task = new RunTimer();
+    
     
     
     //user events
@@ -81,8 +70,10 @@ public class Controls implements Initializable {
 
     public void speedIncreased(MouseEvent event)
     {
-        System.out.println(speedSlider.getValue());       
-  
+        int delay = 1950-19*(int)speedSlider.getValue();
+        task.cancel();
+        task = new RunTimer();
+        timer.scheduleAtFixedRate(task, 250, delay);
     }
 
     public void stopButton(ActionEvent event)
@@ -102,5 +93,18 @@ public class Controls implements Initializable {
     {
         play=true;
     }
-     
+    private class RunTimer extends TimerTask
+    {
+        @Override 
+        public void run()
+        {
+            if(play)
+            {
+                test.run();
+                GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+                Paint.drawSquares(gc, mainCanvas, test);
+                Paint.drawGrid(gc, mainCanvas, test);
+            }
+        }
+    }
 }
