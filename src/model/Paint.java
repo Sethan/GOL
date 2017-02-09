@@ -40,7 +40,7 @@ public class Paint {
     {
         gc = mC.getGraphicsContext2D();
         
-        gc.setFill(javafx.scene.paint.Color.LIGHTGREY);
+        gc.setFill(javafx.scene.paint.Color.WHITESMOKE);
         gc.fillRect(0, 0, mC.getWidth(), mC.getHeight());
         for(int i = 0; i<cellG.getH();i++)
         {
@@ -48,7 +48,7 @@ public class Paint {
             {
                 if(cellG.table[n][i].isAlive())
                 {
-                    gc.setFill(javafx.scene.paint.Color.YELLOW);
+                    gc.setFill(javafx.scene.paint.Color.BLACK);
                     int x=n*(int)mC.getWidth()/cellG.getW();
                     int y=i*(int)mC.getHeight()/cellG.getH();
                     gc.fillRect(x,y, mC.getWidth()/cellG.getW(), mC.getHeight()/cellG.getH());
@@ -60,7 +60,6 @@ public class Paint {
     {
         int n=(x*cellG.getW())/(int)mC.getWidth();
         int i=(y*cellG.getH())/(int)mC.getHeight();
-        System.out.println(n+","+i);
         cellG.table[n][i].changeState();
     }    
 }

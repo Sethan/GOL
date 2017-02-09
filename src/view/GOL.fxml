@@ -7,20 +7,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="1099.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.Controls">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0" minWidth="10.0" prefWidth="1099.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="682.0" minWidth="0.0" prefWidth="0.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="492.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="636.0" minHeight="0.0" prefHeight="636.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1028.0" style="-fx-background-color: #DARKGREY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controls">
    <children>
-      <VBox>
-         <children>
-            <MenuBar prefHeight="38.0" prefWidth="1099.0" style="-fx-background-color: #b3b3b3;">
+      <BorderPane layoutX="156.0" layoutY="14.0" prefHeight="627.0" prefWidth="1028.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -39,43 +30,54 @@
                 </Menu>
               </menus>
             </MenuBar>
-         </children>
-      </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" GridPane.rowIndex="1">
-         <children>
-            <Canvas height="639.0" width="1097.0" fx:id="mainCanvas" onMouseClicked="#canvasClick"  />
-         </children>
-      </HBox>
-      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: #b3b3b3;" GridPane.rowIndex="2">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="83.0" text="Start" textFill="#3c3c3c" fx:id="startBtn" onAction="#startButton">
-               <font>
-                  <Font name="Bernard MT Condensed" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="83.0" text="Stop" fx:id="stopBtn" onAction="#stopButton" textFill="#3c3c3c">
-               <font>
-                  <Font name="Bernard MT Condensed" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="83.0" text="Reset" fx:id="resetBtn" onAction="#resetButton"  textFill="#3c3c3c">
-               <font>
-                  <Font name="Bernard MT Condensed" size="14.0" />
-               </font>
-            </Button>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Increase Speed">
-               <font>
-                  <Font name="Tahoma" size="17.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </HBox.margin>
-            </Text>
-            <Slider prefHeight="27.0" prefWidth="140.0" fx:id="speedSlider" onMouseDragged="#speedIncreased"/>
-         </children>
-         <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-         </padding>
-      </HBox>
+         </top>
+         <bottom>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="43.0" prefWidth="1028.0" spacing="20.0" style="-fx-background-color: FFFF;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button depthTest="DISABLE" mnemonicParsing="false" prefHeight="27.0" prefWidth="83.0" text="Start" textFill="#3c3c3c" underline="true" fx:id="startBtn" onAction="#startButton">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" text="Stop" textFill="#3c3c3c" fx:id="stopBtn" onAction="#stopButton" >
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Reset" textFill="#3c3c3c" fx:id="resetBtn" onAction="#resetButton">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                     </font>
+                  </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Increase Speed" wrappingWidth="98.404296875">
+                     <font>
+                        <Font name="Tahoma" size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Slider prefHeight="27.0" prefWidth="140.0"  fx:id="speedSlider" onMouseDragged="#speedIncreased">
+                     <HBox.margin>
+                        <Insets left="-20.0" right="-20.0" top="-0.0" />
+                     </HBox.margin>
+                  </Slider>
+               </children>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </HBox>
+         </bottom>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: ;" BorderPane.alignment="CENTER">
+               <children>
+                  <Canvas height="550.0" width="1028.0" fx:id="mainCanvas" onMouseClicked="#canvasClick" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
    </children>
-</GridPane>
+</AnchorPane>
