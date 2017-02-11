@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-import java.util.Timer;
-import java.util.TimerTask;
+
 /**
  *
  * @author lars
@@ -101,7 +100,7 @@ public class CellGraph {
         {
             if(neighbours>3||neighbours<2)
             {
-                this.copy[x][y]=!this.copy[x][y];
+                this.copy[x][y]=!this.copy[x][y];//dreper cellen
               
             }
         }
@@ -109,7 +108,7 @@ public class CellGraph {
         {
             if(neighbours==3)
             {
-                this.copy[x][y]=!this.copy[x][y];
+                this.copy[x][y]=!this.copy[x][y];//gjennopliver celler
             }
         }
     }
