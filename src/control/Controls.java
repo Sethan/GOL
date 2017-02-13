@@ -66,7 +66,7 @@ public class Controls implements Initializable {
 
     public void speedIncreased(MouseEvent event)
     {
-        int delay = 400-30*(int)Math.sqrt(speedSlider.getValue());
+        int delay = 350-30*(int)Math.sqrt(speedSlider.getValue());
         task.cancel();
         task = new RunTimer();
         timer.scheduleAtFixedRate(task, 250, delay);

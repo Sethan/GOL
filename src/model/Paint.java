@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package model;
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.SwingUtilities;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import model.CellGraph;
+import javafx.scene.paint.Color;
+
 
 /**
  *
@@ -39,6 +41,9 @@ public class Paint {
     public static void drawSquares(GraphicsContext gc, Canvas mC, CellGraph cellG)
     {
         gc = mC.getGraphicsContext2D();
+        int maxB = 255/cellG.getW();
+        int maxG = 255/cellG.getH();
+        
         
         gc.setFill(javafx.scene.paint.Color.WHITESMOKE);
         gc.fillRect(0, 0, mC.getWidth(), mC.getHeight());
@@ -48,7 +53,10 @@ public class Paint {
             {
                 if(cellG.table[n][i].isAlive())
                 {
-                    gc.setFill(javafx.scene.paint.Color.BLACK);
+
+                    gc.setFill(Color.rgb(150, maxG*i, maxB*n));
+                  
+   
                     int x=n*(int)mC.getWidth()/cellG.getW();
                     int y=i*(int)mC.getHeight()/cellG.getH();
                     gc.fillRect(x,y, mC.getWidth()/cellG.getW(), mC.getHeight()/cellG.getH());
