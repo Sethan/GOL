@@ -5,9 +5,7 @@
  */
 package model;
 //import java.awt.Color;
-import java.awt.Image;
-import java.awt.Graphics;
-import javax.swing.SwingUtilities;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import model.CellGraph;
@@ -38,7 +36,7 @@ public class Paint {
         }
     }
     
-    public static void drawSquares(GraphicsContext gc, Canvas mC, CellGraph cellG)
+    public static void drawSquares(GraphicsContext gc, Canvas mC, CellGraph cellG, int time)
     {
         gc = mC.getGraphicsContext2D();
         int maxB = 255/cellG.getW();
@@ -54,8 +52,8 @@ public class Paint {
                 if(cellG.table[n][i].isAlive())
                 {
 
-                    gc.setFill(Color.rgb(150, maxG*i, maxB*n));
-                  
+                    gc.setFill(Color.rgb( (int)(127+60*Math.sin(time/50)), maxG*i, maxB*n));
+                    
    
                     int x=n*(int)mC.getWidth()/cellG.getW();
                     int y=i*(int)mC.getHeight()/cellG.getH();

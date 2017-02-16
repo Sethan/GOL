@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import model.CellGraph;
 import model.Paint;
+import model.FileHandler;
 
 
 /**
@@ -60,7 +61,7 @@ public class Controls implements Initializable {
        
         Paint.toggleSquare((int)event.getX(), (int)event.getY(), mainCanvas, test);
         GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-        Paint.drawSquares(gc, mainCanvas, test);
+        Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
         Paint.drawGrid(gc, mainCanvas, test);
     }
 
@@ -81,10 +82,28 @@ public class Controls implements Initializable {
     {
         test.resetGraph();
         GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-        Paint.drawSquares(gc, mainCanvas, test);
+        Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
         Paint.drawGrid(gc, mainCanvas, test);
+        
     }
     
+    public void loadEvent(ActionEvent event)
+    {
+        play=false;
+        FileHandler.loadFile(test);
+        GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+        Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
+        Paint.drawGrid(gc, mainCanvas, test);
+        
+    }
+    
+    public void saveEvent(ActionEvent event)
+    {
+        play=false;
+        FileHandler.saveFile(test);
+        
+    }
+   
     public void startButton(ActionEvent event)
     {
         play=true;
@@ -98,7 +117,7 @@ public class Controls implements Initializable {
             {
                 test.run();
                 GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-                Paint.drawSquares(gc, mainCanvas, test);
+                Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
                 Paint.drawGrid(gc, mainCanvas, test);
             }
         }
