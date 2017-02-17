@@ -9,7 +9,8 @@ package model;
  *
  * @author lars
  */
-public class CellGraph {
+public class CellGraph 
+{
     public Cell[][] table;
     private final int cellRow;
     private final int cellCol;
@@ -91,7 +92,7 @@ public class CellGraph {
         }
         System.out.println(s);
     }
-
+    
     public void decide(int x , int y)
     {
         int neighbours=this.scan(x, y);
@@ -138,6 +139,11 @@ public class CellGraph {
         return neighbours;
 
     }
+    public int getSimulations()
+    {
+        return this.simulations;
+    }
+    
     public void resetGraph()
     {
         for(int i=0; i < this.cellRow; i++)
