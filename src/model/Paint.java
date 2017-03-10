@@ -62,6 +62,7 @@ public class Paint {
             }
         }
     }
+    
     public static void toggleSquare(int x, int y, Canvas mC, CellGraph cellG)
     {
         int n=(x*cellG.getW())/(int)mC.getWidth();
