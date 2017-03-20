@@ -68,9 +68,9 @@ public class Controls implements Initializable {
 
     public void zoomIn(ActionEvent event)
     {
-        zoom=zoom*2;
+        zoom=zoom*1.25;
         GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-        gc.scale(2,2);
+        gc.scale(1.25,1.25);
         Paint.cleanCanvas(gc, mainCanvas);
         Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
         Paint.drawGrid(gc, mainCanvas, test);
@@ -80,9 +80,9 @@ public class Controls implements Initializable {
     {
         if(zoom>1)
         {
-            zoom=zoom*0.5;
+            zoom=zoom*0.8;
             GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-            gc.scale(0.5,0.5);
+            gc.scale(0.8,0.8);
             Paint.cleanCanvas(gc, mainCanvas);
             Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
             Paint.drawGrid(gc, mainCanvas, test);
