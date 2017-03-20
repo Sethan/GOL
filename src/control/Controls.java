@@ -12,15 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import model.CellGraph;
 import model.Paint;
 import model.FileHandler;
-
-
+import model.DimensionHandler;
 /**
  *
  * @author lars
@@ -44,7 +42,6 @@ public class Controls implements Initializable {
     @FXML private Canvas mainCanvas;
     @FXML private Slider speedSlider;
     private static boolean play=false;
-    
     CellGraph test=new CellGraph(70,40);
     Timer timer = new Timer(true);
     RunTimer task = new RunTimer();
@@ -126,6 +123,16 @@ public class Controls implements Initializable {
     {
         play=true;
     }
+    
+    public void changeDimensions(ActionEvent event)
+    {
+        play=false;
+        test = DimensionHandler.createDialog();
+        GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+        Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
+        Paint.drawGrid(gc, mainCanvas, test);
+    }
+    
     private class RunTimer extends TimerTask
     {
         @Override 
