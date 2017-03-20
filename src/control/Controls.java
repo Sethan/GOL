@@ -46,20 +46,16 @@ public class Controls implements Initializable {
     private static boolean play=false;
     
     CellGraph test=new CellGraph(70,40);
-    
-    
-    
     Timer timer = new Timer(true);
     RunTimer task = new RunTimer();
     
-    
+    double zoom = 1;
     
     //user events
     
     public void canvasClick(MouseEvent event)
     {
-       
-        Paint.toggleSquare((int)event.getX(), (int)event.getY(), mainCanvas, test);
+        Paint.toggleSquare((int)event.getX(), (int)event.getY(), mainCanvas, test, zoom);
         GraphicsContext gc = mainCanvas.getGraphicsContext2D();
         Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
         Paint.drawGrid(gc, mainCanvas, test);
@@ -73,6 +69,29 @@ public class Controls implements Initializable {
         timer.scheduleAtFixedRate(task, 250, delay);
     }
 
+    public void zoomIn(ActionEvent event)
+    {
+        zoom=zoom*2;
+        GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+        gc.scale(2,2);
+        Paint.cleanCanvas(gc, mainCanvas);
+        Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
+        Paint.drawGrid(gc, mainCanvas, test);
+    }
+
+    public void zoomOut(ActionEvent event)
+    {
+        if(zoom>1)
+        {
+            zoom=zoom*0.5;
+            GraphicsContext gc = mainCanvas.getGraphicsContext2D();
+            gc.scale(0.5,0.5);
+            Paint.cleanCanvas(gc, mainCanvas);
+            Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
+            Paint.drawGrid(gc, mainCanvas, test);
+        }
+    }
+    
     public void stopButton(ActionEvent event)
     {
 	play=false;	
@@ -94,7 +113,6 @@ public class Controls implements Initializable {
         GraphicsContext gc = mainCanvas.getGraphicsContext2D();
         Paint.drawSquares(gc, mainCanvas, test, test.getSimulations());
         Paint.drawGrid(gc, mainCanvas, test);
-        
     }
     
     public void saveEvent(ActionEvent event)

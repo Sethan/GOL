@@ -17,6 +17,13 @@ import javafx.scene.paint.Color;
  * @author lars
  */
 public class Paint {
+    public static void cleanCanvas(GraphicsContext gc, Canvas mC)
+    {
+      gc = mC.getGraphicsContext2D();
+      gc.setFill(javafx.scene.paint.Color.WHITESMOKE);  
+      gc.fillRect(0, 0, mC.getWidth(), mC.getHeight());
+    }
+    
     
     public static void drawGrid(GraphicsContext gc, Canvas mC, CellGraph cellG)
     {
@@ -62,10 +69,10 @@ public class Paint {
             }
         }
     }
-    public static void toggleSquare(int x, int y, Canvas mC, CellGraph cellG)
+    public static void toggleSquare(int x, int y, Canvas mC, CellGraph cellG, double z)
     {
-        int n=(x*cellG.getW())/(int)mC.getWidth();
-        int i=(y*cellG.getH())/(int)mC.getHeight();
+        int n=(x*cellG.getW())/(int)(mC.getWidth()*z);
+        int i=(y*cellG.getH())/(int)(mC.getHeight()*z);
         cellG.table[n][i].changeState();
     }    
 }
